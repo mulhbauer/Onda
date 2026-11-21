@@ -1,0 +1,4 @@
+import { Globe2 } from 'lucide-react';
+export default function CatalogNotice() {
+ return <aside className="mt-8 flex gap-4 rounded-xl border border-border bg-card p-5"><Globe2 className="mt-1 shrink-0 text-primary"/><div><h3 className="text-base font-bold">Descoberta global, catálogo aberto</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">Rock, Pop, Reggae e Rap de artistas disponíveis no Audius. A consulta não impõe país nem época; a cobertura depende do que os artistas publicam. Não há garantia de todos os países, períodos ou sucessos comerciais. Remixes e versões podem aparecer com o nome de quem os publicou.</p><a href="https://audius.co" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:opacity-80">Conhecer a fonte: Audius ↗</a></div></aside>;
+}

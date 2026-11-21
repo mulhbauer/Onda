@@ -1,0 +1,3 @@
+import { NavLink } from 'react-router-dom';
+import { House, Search, Library } from 'lucide-react';
+export default function MobileNav(){return <nav aria-label="Navegação principal" className="fixed bottom-0 left-0 z-40 grid h-16 w-full grid-cols-3 border-t border-border bg-background md:hidden">{[{to:'/',label:'Descobrir',Icon:House},{to:'/search',label:'Buscar',Icon:Search},{to:'/library',label:'Biblioteca',Icon:Library}].map(({to,label,Icon})=><NavLink key={to} to={to} end={to==='/'} className={({isActive})=>`flex flex-col items-center justify-center gap-1 text-[10px] font-semibold ${isActive?'text-primary':'text-muted-foreground'}`}><Icon size={21}/>{label}</NavLink>)}</nav>;}

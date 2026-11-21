@@ -1,0 +1,4 @@
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+interface ErrorBoundaryProps { children:ReactNode; }
+interface ErrorBoundaryState { failed:boolean; }
+export default class ErrorBoundary extends Component<ErrorBoundaryProps,ErrorBoundaryState>{state={failed:false};static getDerivedStateFromError(){return{failed:true};}componentDidCatch(error:Error,info:ErrorInfo){console.error('[Onda]',error,info.componentStack);}render(){if(this.state.failed)return <main className="page-shell"><h1 className="text-2xl font-bold">Não foi possível abrir esta tela</h1><p className="my-4 text-muted-foreground">Recarregue a página. Seus dados locais não serão apagados.</p><button className="secondary-button" onClick={()=>location.reload()}>Recarregar</button></main>;return this.props.children;}}

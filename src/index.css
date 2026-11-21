@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+ :root { --background: 180 6% 7%; --foreground: 90 10% 96%; --card: 180 5% 11%; --elevated: 180 4% 15%; --primary: 79 89% 64%; --primary-foreground: 180 10% 7%; --muted: 180 4% 14%; --muted-foreground: 180 3% 64%; --border: 180 4% 19%; --accent: 165 35% 32%; --destructive: 0 90% 74%; --radius: 12px; }
+ * { @apply border-border; }
+ body { @apply bg-background text-foreground font-sans antialiased; margin: 0; font-size: 16px; }
+ button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
+ select { color-scheme: dark; }
+ summary:focus-visible, select:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
+ button { @apply transition-opacity duration-200 disabled:opacity-40 disabled:cursor-not-allowed; }
+ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
+ ::selection { background: hsl(var(--primary) / .3); }
+ input[type=range] { accent-color: hsl(var(--primary)); cursor: pointer; }
+ ::-webkit-scrollbar { width: 6px; height: 6px; }
+ ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
+@layer components {
+ .icon-button { @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-muted-foreground hover:bg-elevated hover:text-foreground; }
+ .secondary-button { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border px-5 text-sm font-semibold hover:bg-elevated; }
+ .primary-button { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:opacity-90 active:scale-[.98]; }
+ .eyebrow { @apply text-xs font-bold uppercase tracking-[.18em] text-muted-foreground; }
+ .page-shell { @apply mx-auto w-full max-w-[1500px] px-5 pb-8 pt-6 sm:px-8 lg:px-10; }
+}

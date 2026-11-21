@@ -1,0 +1,8 @@
+import { useState } from 'react';
+import { MoreHorizontal, Plus, Trash2 } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuLabel } from '@/components/ui/dropdown-menu';
+import { useLibrary } from '@/hooks/useLibrary';
+import CreatePlaylistDialog from '@/components/forms/CreatePlaylistDialog';
+import type { Track } from '@/types/music';
+interface TrackMenuProps { track:Track; playlistId?:string; }
+export default function TrackMenu({track,playlistId}:TrackMenuProps){const library=useLibrary();const [creating,setCreating]=useState(false);return <><DropdownMenu><DropdownMenuTrigger asChild><button aria-label="Opções da música" className="icon-button"><MoreHorizontal size={18}/></button></DropdownMenuTrigger><DropdownMenuContent align="end" className="min-w-52 border-border bg-elevated text-foreground"><DropdownMenuLabel>Adicionar à playlist</DropdownMenuLabel>{library.playlists.map(p=><DropdownMenuItem key={p.id} className="min-h-11 cursor-pointer focus:bg-card focus:text-primary" onSelect={()=>library.addTrack(p.id,track.id,track)}>{p.name}</DropdownMenuItem>)}<DropdownMenuItem className="min-h-11 cursor-pointer focus:bg-card focus:text-primary" onSelect={()=>setCreating(true)}><Plus size={16} className="mr-2"/>Criar nova playlist</DropdownMenuItem>{playlistId&&<DropdownMenuItem className="min-h-11 cursor-pointer text-destructive focus:bg-card focus:text-destructive" onSelect={()=>library.removeTrack(playlistId,track.id)}><Trash2 size={16} className="mr-2"/>Remover da playlist</DropdownMenuItem>}</DropdownMenuContent></DropdownMenu><CreatePlaylistDialog open={creating} onOpenChange={setCreating}/></>;}
